@@ -1,0 +1,167 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.fitclubs.nsuask.ru",
+  "resourcePath": "tutoring_requests",
+  "apis": [
+    {
+      "path": "/mobile/ticket/tutoring_requests.json",
+      "operations": [
+        {
+          "summary": "Lists all Tutoring Tickets",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Ticket::TutoringRequests#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/ticket/tutoring_requests.json",
+      "operations": [
+        {
+          "summary": "Create ticket with attributes",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "time",
+              "type": "string",
+              "description": "tutoring time",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "coach_id",
+              "type": "string",
+              "description": "tutoring coach id",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "club_id",
+              "type": "string",
+              "description": "tutoring club id",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "repeats_count",
+              "type": "string",
+              "description": "tutoring repeats count",
+              "required": false
+            },
+            {
+              "paramType": "query",
+              "name": "comment",
+              "type": "string",
+              "description": "tutoring comment",
+              "required": false
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Mobile::Ticket::TutoringRequests#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/ticket/tutoring_requests/{id}.json",
+      "operations": [
+        {
+          "summary": "Show tutoring ticket by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "tutoring ticket id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Ticket::TutoringRequests#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/ticket/tutoring_requests/{id}.json",
+      "operations": [
+        {
+          "summary": "Destroy tutoring ticket by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "tutoring ticket id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Ticket::TutoringRequests#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

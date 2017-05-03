@@ -1,0 +1,2 @@
+class QrMaxChargesException < Exception
+end

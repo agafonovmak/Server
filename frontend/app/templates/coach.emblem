@@ -1,0 +1,62 @@
+.coach-wrapper
+  .row.section-header
+    h4.page-title
+      div Тренер #{model.name}
+      = link-to 'edit-coach' model.id class='btn new-item without-margin'
+        i.fa.fa-pencil-square-o
+        |Редактировать
+  .content-container
+    b Информация о тренере
+    hr
+    .col
+      label ФИО тренера
+      p.lead = model.name
+    .col
+      label Фото
+      p.lead
+        img class="materialboxed" width="650" src=model.imageUrl
+    .col
+      label Образование тренера
+      .row
+        if model.coachEducations
+          ul.collection
+            each model.coachEducations as |education|
+              li.collection-item
+                = education.name
+        else
+          | Не указано
+    .col
+      label Творческие и спортивные достижения
+      .row
+        if model.coachAchievements
+          ul.collection
+            each model.coachAchievements as |achievement|
+              li.collection-item
+                = achievement.name
+        else
+          | Не указаны
+    .col
+      label Фитнес специализации
+      .row
+        if model.coachSpecializations
+          ul.collection
+            each model.coachSpecializations as |specialization|
+              li.collection-item
+                = specialization.name
+        else
+          | Не указаны
+    .col
+      label Ведет персональные тренировки
+      p.lead
+        if model.conductingPersonal
+          | Да
+        else
+          | Нет
+
+    .col
+      label Ведет групповые тренировки
+      p.lead
+        if model.conductingGroup
+          | Да
+        else
+          | Нет

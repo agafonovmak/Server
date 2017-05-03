@@ -1,0 +1,26 @@
+.reward-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div Список шаблонов расписания
+      = link-to 'new-schedule-template' class='btn new-item without-margin'
+        i.fa.fa-plus
+        | Добавить шаблон расписания
+  .content-container
+      table.responsive-table
+        thead
+          tr
+            th  #
+            th  Название
+            th  Действия
+        tbody
+          = each model as |rewardTemplate index|
+            tr
+              td = inc index page perPage
+              td = rewardTemplate.name
+              td
+                custom-action action='show'    model=rewardTemplate icon='fa-search' tooltipTitle='Просмотреть'
+                custom-action action='destroy' model=rewardTemplate icon='fa-times' tooltipTitle='Удалить'
+      if isPaginationEnabled
+        = page-numbers content=paginationContent action='changePage'
+
+

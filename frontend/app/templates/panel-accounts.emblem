@@ -1,0 +1,28 @@
+.news-wrapper
+  .row.section-header
+    h4.page-title
+      div Список учетных записей
+      = if-can subjectType='News' subjectId=null action='create'
+        = link-to 'new-panel-account' class='btn new-item without-margin'
+          i.fa.fa-plus
+          |Добавить учетную запись
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Email
+          th  Тип
+          th  Действия
+      tbody
+        = each model as |account index|
+          tr
+            td = inc index page perPage
+            td = account.email
+            td = account.userType.name
+            td
+              custom-action action='edit'     model=account icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              custom-action action='destroy'  model=account icon='fa-times' tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'

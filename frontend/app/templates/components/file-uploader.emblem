@@ -1,0 +1,6 @@
+.file-field.input-field
+  .btn
+    span.white-text Выбрать файл
+    = input type="file" value=tmpFile
+  .file-path-wrapper
+    input.file-path.validate placeholder="Выберите изображение" type="text"

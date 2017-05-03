@@ -1,0 +1,52 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.fitclubs.nsuask.ru",
+  "resourcePath": "coaches",
+  "apis": [
+    {
+      "path": "/mobile/coaches.json",
+      "operations": [
+        {
+          "summary": "Lists all coaches",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Coaches#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/coaches/{id}.json",
+      "operations": [
+        {
+          "summary": "Show coach by id",
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "coach id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Coaches#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

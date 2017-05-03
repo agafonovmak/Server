@@ -1,0 +1,101 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.fitclubs.nsuask.ru",
+  "resourcePath": "tutorings",
+  "apis": [
+    {
+      "path": "/mobile/tutorings.json",
+      "operations": [
+        {
+          "summary": "Lists all tutorings",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Tutorings#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/tutorings/{id}.json",
+      "operations": [
+        {
+          "summary": "Show tutoring by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "tutoring id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Tutorings#show",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/tutorings/{id}.json",
+      "operations": [
+        {
+          "summary": "Destroy tutoring by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "tutoring id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Tutorings#destroy",
+          "method": "delete"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

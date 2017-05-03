@@ -1,0 +1,66 @@
+.coaches-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание тренера
+  .content-container
+    form
+      .col
+        label ФИО
+        = input type='text' value=model.name
+      .col.with-margin
+        = input id='isconductingPersonal' type="checkbox" checked=model.conductingPersonal
+        label for="isconductingPersonal" Ведет персональные тренировки
+      .col.with-margin
+        = input id='isconductingGroup' type="checkbox" checked=model.conductingGroup
+        label for="isconductingGroup" Ведет групповые тренировки
+      .col
+        label URL для шаринга
+        = input type='text' value=model.shareUrl
+      .col.with-margin
+        label Изображение
+        file-uploader file=model.image
+      .col.with-margin
+        label Образование
+        br
+        a.waves-effect.waves-light.btn.white-text{action 'addEducation'}
+          i.fa.fa-plus
+          |&nbsp;Добавить образование
+        .row
+          ul.collection
+            each model.coachEducations as |education|
+              li.collection-item
+                .input
+                  = input type='text' value=education.name placeholder='Введите данные об обучении'
+                .icon
+                  i.fa.fa-times{action 'deleteItem' education}
+      .col.with-margin
+        label Творческие и спортивные достижения
+        br
+        a.waves-effect.waves-light.btn.white-text{action 'addAchievement'}
+          i.fa.fa-plus
+          |&nbsp;Добавить творческое или спортивное достижение
+        .row
+          ul.collection
+            each model.coachAchievements as |achievement|
+              li.collection-item
+                .input
+                  = input type='text' value=achievement.name placeholder='Введите данные о достижении'
+                .icon
+                  i.fa.fa-times{action 'deleteItem' achievement}
+      .col.with-margin
+        label Фитнес специализации
+        br
+        a.waves-effect.waves-light.btn.white-text{action 'addSpecialization'}
+          i.fa.fa-plus
+          |&nbsp;Добавить фитнес специализацию
+        .row
+          ul.collection
+            each model.coachSpecializations as |specialization|
+              li.collection-item
+                .input
+                  = input type='text' value=specialization.name placeholder='Введите данные о специализации'
+                .icon
+                  i.fa.fa-times{action 'deleteItem' specialization}
+      .col
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+

@@ -1,0 +1,10 @@
+.input-field.col.s12
+  select{action 'addCoach' on='change'}
+    option disabled="" selected="" value=""  Выберите тренера из списка
+    = each options as |option|
+      option value=option.id
+        if option.name
+          = option.name
+        else
+          = option.title
+  label Список тренеров

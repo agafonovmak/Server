@@ -1,0 +1,28 @@
+.score-rules-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Список баллов за шаринг
+      = if-can subjectType='ScoreRule' subjectId=null action='create'
+        = link-to 'new-score-rule' class='btn new-item inline-block'
+          i.fa.fa-plus
+          |Добавить правило за шаринг
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название соц.сети
+          th  Количество очков
+          th  Действия
+      tbody
+        = each model as |scoreRule index|
+          tr
+            td = inc index page perPage
+            td = scoreRule.name
+            td = scoreRule.score
+            td
+              custom-action action='edit' model=scoreRule icon='fa-pencil-square-o' tooltipTitle='Редактирование'
+              custom-action action='destroy' model=scoreRule icon='fa-times' tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'

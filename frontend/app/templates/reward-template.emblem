@@ -1,0 +1,32 @@
+.reward-template-wrapper
+  .row.section-header
+    h4.page-title
+      div Приз #{model.name}
+      = link-to 'edit-reward-template' model.id class='btn new-item without-margin'
+        i.fa.fa-pencil-square-o
+        |Редактировать
+  .content-container
+    .col
+      label Название
+      p.lead = model.name
+
+    .col
+      label Описание
+      p.lead = model.description
+
+    .col
+      label Фото
+      p.lead
+        img class="materialboxed" width="650" src=model.fileUrl
+
+    .col
+      label Стоимость приза (Количество звезд)
+      p.lead = model.levelCost
+
+    .col
+      label Лимит
+      p.lead = model.startedRewardsCount
+
+    .col
+      label Призов осталось
+      p.lead = model.availableRewardsCount

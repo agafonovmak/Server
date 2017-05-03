@@ -1,0 +1,144 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.fitclubs.nsuask.ru",
+  "resourcePath": "cards",
+  "apis": [
+    {
+      "path": "/mobile/cards/{id}/break_frost.json",
+      "operations": [
+        {
+          "summary": "Break frost card by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "card id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Cards#break_frost",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/cards/{id}/add_social_score.json",
+      "operations": [
+        {
+          "summary": "Add score to users loyalty via score rule id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "name",
+              "type": "string",
+              "description": "Score rule name",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": null
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": null
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": null
+            }
+          ],
+          "nickname": "Mobile::Cards#add_social_score",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/cards.json",
+      "operations": [
+        {
+          "summary": "Lists all cards",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Cards#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/cards/{id}.json",
+      "operations": [
+        {
+          "summary": "Show card by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "card id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Cards#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

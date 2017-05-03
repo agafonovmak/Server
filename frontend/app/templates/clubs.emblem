@@ -1,0 +1,37 @@
+.clubs-wrapper
+  .row.section-header
+    h4.page-title
+      div Список клубов
+      if-can subjectType='Club' subjectId=null action='create'
+        = link-to 'new-club' class='btn new-item without-margin'
+          i.fa.fa-plus
+          |Создать клуб
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название
+          th  Телефон
+          th  Адрес
+          th  Ссылка на сайт
+          th  Действия
+      tbody
+        = each model as |club index|
+          tr
+            td = inc index page perPage
+            td = club.name
+            td = club.phone
+            td = club.address
+            td
+              a href=club.websiteLink
+                = club.websiteLink
+            td
+              custom-action action='show'    model=club icon='fa-eye' tooltipTitle='Открыть клуб'
+              if-can subjectType='Club' subjectId=null action='update'
+                custom-action action='edit'    model=club icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              if-can subjectType='Club' subjectId=null action='destroy'
+                custom-action action='destroy' model=club icon='fa-times' tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'

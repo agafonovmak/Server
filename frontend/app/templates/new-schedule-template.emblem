@@ -1,0 +1,88 @@
+.schedule-wrapper
+  .row.section-header
+    h4.page-title
+      div Создание шаблона расписания
+      a.btn.new-item.without-margin{action 'openModal'}
+        i.fa.fa-plus
+        | Добавить тренировку
+
+.content-container
+  .row
+    label Название шаблона
+    = input type='text' value=model.name
+  .row
+    full-calendar [
+      header=fcHeader
+      events=events
+      timeFormat="HH:mm"
+      slotDuration="00:10:00"
+      scrollTime="00:30"
+      minTime="00:00"
+      maxTime="24:00"
+      columnFormat="dddd"
+      eventRender=(action "eventRender")
+      allDaySlot=false
+      nowIndicator=false
+      firstDay=1
+    ]
+  .row
+    a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+
+#workout-modal.modal
+  .modal-content
+    .container
+      h4 Добавление события
+      .with-margin
+        static-select title='Выбор дня тренировки' options=scheduleWorkout.DAY_NAMES value=scheduleWorkout.dayName
+      .col
+        label Время начала
+        jquery-timepicker value=scheduleWorkout.time
+      .col
+        label Стоимость тренировки
+        = input type='text' value=scheduleWorkout.price
+      .with-margin
+        static-select title='Выбор статуса тренировки' options=scheduleWorkout.STATUSES value=scheduleWorkout.status
+      .with-margin
+        select-component title='Выбор типа тренировки' options=types value=scheduleWorkout.type optionType='workout/type'
+      .with-margin
+        select-component title='Выбор шаблона тренировки' options=templates value=scheduleWorkout.template onSelect='setTemplate' optionType='workout/template'
+      .col
+        label Название тренировоки
+        = input type='text' value=scheduleWorkout.name
+      .col
+        label Описание тренировоки
+        = textarea value=scheduleWorkout.description class='materialize-textarea'
+      .col
+        label Длительность (в мин.)
+        = input type='text' value=scheduleWorkout.duration
+      .col
+        label Количество мест
+        = input type='text' value=scheduleWorkout.seatsCount
+      .col
+        label Зал
+        = input type='text' value=scheduleWorkout.gym
+      .col
+        label Тренеры
+        .row
+          if scheduleWorkout.coaches
+            ul.collection
+              each scheduleWorkout.coaches as |coach|
+                li.collection-item
+                  .input
+                    = coach.name
+                  .icon
+                    i.fa.fa-times{action 'removeCoach' coach}
+          else
+            | Тренеры не выбраны
+        .row
+          coach-select-component model=scheduleWorkout options=coaches
+      .col
+        label URL для шаринга
+        = input type='text' value=scheduleWorkout.shareUrl
+      .col.with-margin
+        = input id="isNeedManagerConfirm" type="checkbox" checked=scheduleWorkout.isNeedManagerConfirm
+        label for="isNeedManagerConfirm" Требует подтверждение менеджера
+  .modal-footer
+    .container
+      button.waves-effect.waves-light.btn-large.white-text#addWorkout{action 'addWorkout'} Сохранить
+      a.modal-action.waves-effect.waves-green.btn-flat{action 'clearWorkout'} Отмена

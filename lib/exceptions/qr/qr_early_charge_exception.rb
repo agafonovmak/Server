@@ -1,0 +1,2 @@
+class QrEarlyChargeException < Exception
+end

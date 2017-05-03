@@ -1,0 +1,35 @@
+.reward-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div Призы
+      = link-to 'new-reward-template' class='btn new-item without-margin'
+        i.fa.fa-plus
+        | Добавить приз
+  .content-container
+      table.responsive-table
+        thead
+          tr
+            th  #
+            th  Название
+            th  Описание
+            th  Стоимость в уровнях
+            th  Количество доступных
+            th  Действия
+        tbody
+          = each model as |rewardTemplate index|
+            tr
+              td = inc index page perPage
+              td = rewardTemplate.name
+              td
+                = item-description description=rewardTemplate.description
+              td = rewardTemplate.levelCost
+              td = rewardTemplate.availableRewardsCount
+              td
+                custom-action action='show'    model=rewardTemplate icon='fa-search' tooltipTitle='Просмотреть'
+                custom-action action='edit'    model=rewardTemplate icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+                custom-action action='destroy' model=rewardTemplate icon='fa-times' tooltipTitle='Удалить'
+
+      if isPaginationEnabled
+        = page-numbers content=paginationContent action='changePage'
+
+

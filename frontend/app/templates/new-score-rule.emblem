@@ -1,0 +1,17 @@
+.score-rule-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание нового правила за шаринг
+  .content-container
+    form
+      .col
+        label Название соцсети
+        = input type='text' value=model.name
+      .col
+        label Количество баллов
+        = input type='text' value=model.score
+      .col
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+        = link-to 'score-rules' class="waves-effect waves-light btn-large"
+          |Отмена
+

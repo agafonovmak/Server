@@ -1,0 +1,17 @@
+.workout-type-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание типа тренировок
+  .content-container
+    form
+      .col
+        label Название типа тренировок
+        = input type='text' value=model.title
+      .col
+        label Описание типа тренировок
+        = textarea value=model.description class='materialize-textarea'
+      .col.actions
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+        = link-to 'workout-types' class="waves-effect waves-light btn-large"
+          |Отмена
+

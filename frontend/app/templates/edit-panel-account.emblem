@@ -1,0 +1,14 @@
+.club-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block
+        | Редактирование учетной записи&nbsp;
+        = model.email
+  .content-container
+    form
+      .col
+        select-component title='Выбор типа учетной записи' options=userTypes value=model.userType optionType='user-type'
+    .col.actions
+      a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+      = link-to 'panel-accounts' class="waves-effect waves-light btn-large"
+        | Отмена

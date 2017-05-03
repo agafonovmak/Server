@@ -1,0 +1,36 @@
+.wrapper.vertical-sidebar
+  header#header
+    .navbar
+      nav
+        a.button-collapse.top-nav.full.waves-effect.waves-light data-activates="nav-mobile" href="#"
+          i.material-icons menu
+        .nav-wrapper
+          ul.left
+            li
+              = link-to 'root' class='brand-logo'
+                if session.currentUser.isOwner
+                  span Fitclubs
+                else
+                  span = session.currentUser.selectedClub.franchise.name
+          ul.right.hide-on-med-and-down#userland
+            li
+              a.dropdown-button.drop-down-profile data-activates="clubs-list" data-beloworigin="true" href="#"
+                i.fa.fa-flag
+                | Выбранный клуб:&nbsp;
+                = session.currentUser.selectedClubName
+                i.fa.fa-caret-down
+
+              ul#clubs-list.dropdown-content
+                = each clubs as |club|
+                  = clubs-list-item club=club user=session.currentUser selectedClub=session.currentUser.selectedClub gotoRoot='gotoRoot'
+            li
+              i.fa.fa-user
+              span
+                = session.currentUser.email
+                | &nbsp;|&nbsp;
+              i.fa.fa-sign-out{action 'invalidateSession'}
+
+  sidebar-component user=session.currentUser
+  main#content
+    #page-content
+      = outlet

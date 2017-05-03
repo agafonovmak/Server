@@ -1,0 +1,51 @@
+.news-wrapper
+  .row.section-header
+    h4.page-title
+      div Список новостей
+      = if-can subjectType='News' subjectId=null action='create'
+        = link-to 'new-news' class='btn new-item without-margin'
+          i.fa.fa-plus
+          |Добавить новость
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название
+          if session.currentUser.isAdmin
+            th  Клуб
+          th  Тип
+          th  Статус
+          th  Дата публикации
+          th  Отображается в приложении
+          th  Действия
+      tbody
+        = each model as |news index|
+          tr
+            td = inc index page perPage
+            td = news.title
+            if session.currentUser.isAdmin
+              td
+                = link-to 'club' news.club.id
+                  = news.club.name
+            td = news.formattedType
+            td = news.formattedAasmState
+            td = news.formattedPublicationDate
+            td
+              if news.isOnSlider
+                |Да
+              else
+                |Нет
+            td
+              custom-action action='open'     model=news icon='fa-search' tooltipTitle='Просмотреть'
+              if news.isOnSlider
+                custom-action action='hide'   model=news icon='fa-eye-slash' tooltipTitle='Скрыть'
+              else
+                custom-action action='show'   model=news icon='fa-eye' tooltipTitle='Показать'
+              if-can subjectType='News' subjectId=null action='update'
+                custom-action action='edit'     model=news icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              if-can subjectType='News' subjectId=null action='destroy'
+                custom-action action='destroy'  model=news icon='fa-times' tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'

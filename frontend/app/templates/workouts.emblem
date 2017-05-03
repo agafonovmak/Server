@@ -1,0 +1,39 @@
+.workouts-wrapper
+  .row.section-header
+    h4.page-title
+      div Список групповых тренировок
+      = link-to 'new-workout' class='btn new-item without-margin'
+        i.fa.fa-plus
+        |Добавить тренировоку
+
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название
+          th  Описание
+          th  Статус
+          th  Дата и время
+          th  Всего мест
+          th  Доступно мест
+          th  Стоимость
+          th  Действия
+      tbody
+        = each model as |workout index|
+          tr
+            td = inc index page perPage
+            td = workout.template.name
+            td = item-description description=workout.template.description
+            td = workout.status
+            td = workout.datetime
+            td = workout.template.seatsCount
+            td = workout.availableSeatsCount
+            td = workout.price
+            td
+              custom-action action='edit'     model=workout icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              custom-action action='destroy'  model=workout icon='fa-times'           tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='change  Page'
+

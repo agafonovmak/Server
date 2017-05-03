@@ -1,0 +1,18 @@
+.franchise-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div
+        | Франшиза&nbsp;
+        = model.name
+      if-can subjectType='Franchise' subjectId=model.id action='update'
+        = link-to 'edit-franchise' model.id class='btn new-item without-margin'
+          i.fa.fa-pencil-square-o
+          |Редактировать
+  .content-container
+    form
+      .col
+        label Имя франшизы
+        p.lead = model.name
+      .col
+        label Описание франшизы
+        p.lead.word-break = model.description

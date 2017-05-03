@@ -1,0 +1,20 @@
+.training-packages-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание пакета тренировок
+  .content-container
+    form
+      .col
+        label Название пакета тренировок
+        = input type='text' value=model.name
+      .col
+        label Количество тренировок в пакете
+        = input type='text' value=model.trainingCount
+      .col
+        label Стоимость пакета
+        = input type='text' value=model.price
+      .col.actions
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+        = link-to 'training-packages' class="waves-effect waves-light btn-large"
+          |Отмена
+

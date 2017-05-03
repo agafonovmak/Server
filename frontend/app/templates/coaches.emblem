@@ -1,0 +1,42 @@
+.coaches-wrapper
+  .row.section-header
+    h4.page-title
+      div Список тренеров
+      = if-can subjectType='Coach' subjectId=null action='create'
+        = link-to 'new-coach' class='btn new-item without-margin'
+          i.fa.fa-plus
+          |Создать тренера
+
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  ФИО
+          th  Персональный тренер
+          th  Групповой тренер
+          th  Действия
+      tbody
+        = each model as |coach index|
+          tr
+            td = inc index page perPage
+            td = coach.name
+            td
+              if coach.conductingPersonal
+                i.fa.fa-check
+              else
+                i.fa.fa-times
+            td
+              if coach.conductingGroup
+                i.fa.fa-check
+              else
+                i.fa.fa-times
+            td
+              custom-action action='show' model=coach icon='fa-search' tooltipTitle='Просмотреть'
+              if-can subjectType='Coach' subjectId=null action='update'
+                custom-action action='edit' model=coach icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              if-can subjectType='Coach' subjectId=null action='destroy'
+                custom-action action='destroy' model=coach icon='fa-times' tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'

@@ -1,0 +1,75 @@
+.clubs-wrapper
+  .row.section-header
+    h4.page-title
+      div Клуб #{model.name}
+      if-can subjectType='Club' subjectId=null action='update'
+        = link-to 'edit-club' model.id class='btn new-item without-margin'
+          i.fa.fa-pencil-square-o
+          |Редактировать
+  .content-container
+    .col
+      label Фотографии клуба
+      .row
+        gallery-slider
+          .gallery-carousel
+            = each model.clubImages as |image|
+              a.carousel-item-gallery href="#one!"
+                img src=image.fileUrl
+    .col
+      label Название клуба
+      p.lead = model.name
+    .col
+      label Описание клуба
+      p.lead = model.description
+    .col
+      label Режим работы
+      .row
+        .col.s3.day-wrapper
+          .day-title
+            |Понедельник-Пятница
+          .day-content
+            .time
+              i.fa.fa-clock
+              = model.clubShedule.weekdaysTimeStart
+              |&nbsp;-&nbsp;
+              = model.clubShedule.weekdaysTimeStop
+        .col.s3.day-wrapper
+          .day-title
+            |Суббота-Воскресение
+          .day-content
+            .time
+              i.fa.fa-clock
+              = model.clubShedule.weekendTimeStart
+              |&nbsp;-&nbsp;
+              = model.clubShedule.weekendTimeStop
+    .col
+      label Номер клуба
+      p.lead = model.phone
+    .col
+      label Адрес клуба
+      p.lead = model.address
+    .col
+      label Ссылки на клуб в соцсетях
+      p.lead
+        span VK:&nbsp;
+        a href=model.vkLink target='_blank'
+          = model.vkLink
+      p.lead
+        span Twitter:&nbsp;
+        a href=model.twitterLink target='_blank'
+          = model.twitterLink
+      p.lead
+        span Facebook:&nbsp;
+        a href=model.facebookLink target='_blank'
+          = model.facebookLink
+      p.lead
+        span Instagram:&nbsp;
+        a href=model.instagramLink target='_blank'
+          = model.instagramLink
+    .col
+      label Ссылка на сайт клуба
+      p.lead
+        a href=model.websiteLink target='_blank'
+          = model.websiteLink
+
+

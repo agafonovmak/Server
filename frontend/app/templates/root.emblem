@@ -1,0 +1,9 @@
+.content-container
+  .root-route-wrapper
+    .welcome-message
+      .center-align
+        h3
+          |Панель управления клубом
+          br
+          b.text-uppercase
+            = session.currentUser.selectedClubName

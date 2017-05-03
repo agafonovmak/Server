@@ -1,0 +1,2 @@
+.input-field.col.m10.s12
+  input.datepicker type="date" placeholder=placeholder

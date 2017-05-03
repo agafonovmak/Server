@@ -1,0 +1,33 @@
+.training-packages-wrapper
+  .row.section-header
+    h4.page-title
+      div Список пакетов тренировок
+      = link-to 'new-training-package' class='btn new-item without-margin'
+        i.fa.fa-plus
+        |Добавить пакет тренировок
+
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название
+          th  Количество тренировок
+          th  Стоимость
+          th  Действия
+      tbody
+        = each model as |package index|
+          tr
+            td = inc index page perPage
+            td = package.name
+            td = package.trainingCount
+            td = package.price
+            td
+              if-can subjectType='Workout' subjectId=null action='update'
+                custom-action action='edit'     model=package icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              if-can subjectType='Workout' subjectId=null action='destroy'
+                custom-action action='destroy'  model=package icon='fa-times' tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'
+

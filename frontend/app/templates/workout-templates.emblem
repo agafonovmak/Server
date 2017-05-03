@@ -1,0 +1,44 @@
+.workout-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div Список шаблонов групповых тренировок
+      = link-to 'new-workout-template' class='btn new-item without-margin'
+        i.fa.fa-plus
+        |Добавить шаблон тренировок
+
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название
+          th  Описание
+          th  Длительность (мин)
+          th  Количество мест
+          th  Зал
+          th  Нужно подтверждение
+
+          th  Действия
+      tbody
+        = each model as |template index|
+          tr
+            td = inc index page perPage
+            td = template.name
+            td = item-description description=template.description
+            td = template.duration
+            td = template.seatsCount
+            td = template.gym
+            td
+              if template.isNeedManagerConfirm
+                i.fa.fa-check
+              else
+                i.fa.fa-times
+            td
+              if-can subjectType='Workout' subjectId=null action='update'
+                custom-action action='edit'     model=template icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              if-can subjectType='Workout' subjectId=null action='destroy'
+                custom-action action='destroy'  model=template icon='fa-times'           tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='change  Page'
+

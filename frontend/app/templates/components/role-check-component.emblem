@@ -1,0 +1,3 @@
+= input id=role.name type="checkbox" checked=isChecked
+label for=role.name
+  = role.russianName

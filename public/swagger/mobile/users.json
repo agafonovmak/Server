@@ -1,0 +1,186 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.fitclubs.nsuask.ru",
+  "resourcePath": "users",
+  "apis": [
+    {
+      "path": "/mobile/users/send_password_via_sms.json",
+      "operations": [
+        {
+          "summary": "Send password to user by SMS",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "mobile",
+              "type": "string",
+              "description": "user mobile",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Internal Server Error"
+            }
+          ],
+          "nickname": "Mobile::Users#send_password_via_sms",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/users/authenticate.json",
+      "operations": [
+        {
+          "summary": "Get users Token by mobile and password",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "mobile",
+              "type": "string",
+              "description": "user mobile",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "password",
+              "type": "string",
+              "description": "user password",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            },
+            {
+              "code": 401,
+              "responseModel": null,
+              "message": "Unauthorized"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": "Internal Server Error"
+            }
+          ],
+          "nickname": "Mobile::Users#authenticate",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/users/generate_guest.json",
+      "operations": [
+        {
+          "summary": "Create a guest-user and response with token and id",
+          "parameters": [
+            {
+              "paramType": "query",
+              "name": "franchise_id",
+              "type": "string",
+              "description": "franchise id",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "club_id",
+              "type": "string",
+              "description": "club id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 201,
+              "responseModel": null,
+              "message": null
+            },
+            {
+              "code": 500,
+              "responseModel": null,
+              "message": null
+            }
+          ],
+          "nickname": "Mobile::Users#generate_guest",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/users.json",
+      "operations": [
+        {
+          "summary": "Lists all users",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Users#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/users/{id}.json",
+      "operations": [
+        {
+          "summary": "Show user by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "user id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "nickname": "Mobile::Users#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

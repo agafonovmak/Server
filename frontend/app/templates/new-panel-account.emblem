@@ -1,0 +1,25 @@
+.club-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание учетной записи
+  .content-container
+    form
+      .col
+        label Email
+        = input type='email' value=model.email
+      .col
+        label Пароль
+        = input type='password' value=model.password
+      .col
+        label Подтверждение пароля
+        = input type='password' value=model.passwordConfirmation
+      if session.currentUser.isOwner
+        .col.with-padding
+          select-component title='Выбор франшизы' options=franchises value=model.franchise optionType='franchise'
+      if session.currentUser.isAdminOrOwner
+        .col.with-padding
+          club-select-component title='Выбор клуба' options=clubs value=model.clubs optionType='club'
+      .col.with-padding
+        select-component title='Выбор типа учетной записи' options=userTypes value=model.userType optionType='user-type'
+    .col
+      a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить

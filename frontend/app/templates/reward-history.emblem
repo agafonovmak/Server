@@ -1,0 +1,25 @@
+.history-wrapper
+  .row.section-header
+    h4.page-title
+      div Запись состояния приза
+  .content-container
+    .col
+      label Франшиза
+      p.lead = model.franchise.name
+    .col
+      label Клуб
+      p.lead = model.club.name
+    .col
+      label Клиент
+      p.lead = model.client.name
+    .col
+      label Тип записи
+      p.lead = model.formattedType
+    .col
+      label Дата и время
+      p.lead = model.formattedDateTime
+    .col
+      label Фото
+      p.lead
+        img class="materialboxed" width="650" src=model.rewardTemplate.fileUrl
+

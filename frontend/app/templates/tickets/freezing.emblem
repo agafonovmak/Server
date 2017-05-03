@@ -1,0 +1,54 @@
+.tickets-workout-wrapper
+  .row.section-header
+    h4.page-title
+      div Запросы на заморозку карты
+    .col.m12.s12.btn-div.buttons-s.types
+      if isNullState
+        a class="waves-effect waves-light btn white-text primary-button" Все
+      else
+        a{action 'setState' null} Все
+      if isOpenState
+        a class="waves-effect waves-light btn white-text green" Открытые
+      else
+        a{action 'setState' 'opened'} Открытые
+      if isCloseState
+        a class="waves-effect waves-light btn white-text blue" Закрытые
+      else
+        a{action 'setState' 'closed'} Закрытые
+      if isDeclineState
+        a class="waves-effect waves-light btn white-text red" Отклоненные
+      else
+        a{action 'setState' 'declined'} Отклоненные
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Дата
+          th  Карта
+          th  Дата начала заморозки
+          th  Дата окончания заморозки
+          th  Статус
+          th  Коментарий модератора
+          th  Действия
+      tbody
+        = each model as |ticket index|
+          tr
+            td = inc index page perPage
+            td = ticket.formattedCreatedAt
+            td
+            td = ticket.formattedFrom
+            td = ticket.formattedTo
+            td
+              span class=ticket.statusClass
+                = ticket.formattedStatus
+            td
+              = ticket.formattedModeratorComment
+            td
+              = if ticket.isOpened
+                ticket-action sendingAction='close'   ticket=ticket
+                ticket-action sendingAction='decline' ticket=ticket
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'
+

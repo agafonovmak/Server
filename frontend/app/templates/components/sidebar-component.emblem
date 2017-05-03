@@ -1,0 +1,187 @@
+aside.sidebar-left
+  ul#nav-mobile.side-nav.fixed.clearfix.left
+    if-can subjectType='User' subjectId=null action='show_admin_in_main_menu'
+      sidebar-item
+        ul.collapsible data-collapsible="accordion"
+          li
+            .collapsible-header.waves-effect
+              i.fa.fa-users
+              |Администраторы
+            .collapsible-body
+              ul
+                li
+                  = link-to 'panel-accounts' current-when="panel-accounts new-panel-account edit-panel-account"
+                    i.fa.fa-minus
+                    | Учетные записи
+                li
+                  = link-to 'user-types' current-when="user-types new-user-type edit-user-type"
+                    i.fa.fa-minus
+                    | Типы учетных записей
+    if-can subjectType='Franchise' subjectId=null action='show_in_main_menu'
+      sidebar-item
+        ul.collapsible data-collapsible="accordion"
+          li
+            if user.isOwner
+              = link-to 'franchises' current-when="franchises" class='solo-link'
+                .collapsible-header.waves-effect
+                  i.fa.fa-home
+                  | Франшизы
+            else
+              = link-to 'franchise' user.franchise.id current-when="franchise" class='solo-link'
+                .collapsible-header.waves-effect
+                  i.fa.fa-home
+                  | Франшиза
+    if-can subjectType='Club' subjectId=null action='show_in_main_menu'
+      sidebar-item
+        ul.collapsible data-collapsible="accordion"
+          li
+            if user.isAdminOrOwner
+              = link-to 'clubs' current-when="clubs edit-club new-club club" class='solo-link'
+                .collapsible-header.waves-effect
+                  i.fa.fa-flag
+                  |Клубы
+            else
+              = link-to 'club' user.selectedClub.id current-when="club edit-club" class='solo-link'
+                .collapsible-header.waves-effect
+                  i.fa.fa-flag
+                  |Клуб
+    if-can subjectType='Workout' subjectId=null action='show_in_main_menu'
+      sidebar-item
+        ul.collapsible data-collapsible="accordion"
+          li
+            .collapsible-header.waves-effect
+              i.fa.fa-cogs
+              |Тренировки
+            .collapsible-body
+              ul
+                li
+                  = link-to 'coaches' current-when="coaches new-coach edit-coach coach"
+                    i.fa.fa-minus
+                    | Тренеры
+                li
+                  = link-to 'training-packages' current-when="training-packages edit-training-package new-training-package"
+                    i.fa.fa-minus
+                    | Пакеты перс. тренировок
+                li
+                  = link-to 'workout-templates' current-when="workout-templates"
+                    i.fa.fa-minus
+                    | Шаблоны групповых занятий
+                if-can subjectType='Workout::Type' subjectId=null action='show_in_main_menu'
+                  li
+                    = link-to 'workout-types' current-when="workout-types"
+                      i.fa.fa-minus
+                      | Типы групповых занятий
+                li
+                  = link-to 'schedule'
+                    i.fa.fa-minus
+                    | Расписание
+                li
+                  = link-to 'schedule-templates'  current-when="schedule-templates schedule-template new-schedule-template"
+                    i.fa.fa-minus
+                    | Шаблоны расписания
+    if-can subjectType='News' subjectId=null action='show_in_main_menu'
+      sidebar-item
+        ul.collapsible data-collapsible="accordion"
+          li
+            = link-to 'news' class='solo-link' current-when="news edit-news show-news new-news"
+              .collapsible-header.waves-effect
+                i.fa.fa-newspaper-o
+                |Новости
+    sidebar-item
+      ul.collapsible data-collapsible="accordion"
+        li
+          .collapsible-header.waves-effect
+            i.fa.fa-comment-o
+            |Push-уведомления
+          .collapsible-body
+            ul
+              li
+                a href="#"
+                  i.fa.fa-minus
+                  | Отправка уведомлений
+              li
+                a href="#"
+                  i.fa.fa-minus
+                  | Группы клиентов
+
+    if-can subjectType='Ticket' subjectId=null action='show_in_main_menu'
+      sidebar-item
+        ul.collapsible data-collapsible="accordion"
+          li
+            .collapsible-header.waves-effect
+              i.fa.fa-bullseye
+              | Запросы клиентов
+            .collapsible-body
+              ul
+                li
+                  = link-to 'tickets/workout'
+                    i.fa.fa-minus
+                    |Групповые тренировки
+                li
+                  = link-to 'tickets/tutoring'
+                    i.fa.fa-minus
+                    |Персональные тренировки
+                li
+                  = link-to 'tickets/recall'
+                    i.fa.fa-minus
+                    |Обратные звонки
+                li
+                  = link-to 'tickets/freezing'
+                    i.fa.fa-minus
+                    |Заморозка карты
+                li
+                  = link-to 'tickets/extension'
+                    i.fa.fa-minus
+                    |Продление карты
+                li
+                  = link-to 'tickets/guest-visit'
+                    i.fa.fa-minus
+                    |Гостевой визит
+                li
+                  = link-to 'tickets/message'
+                    i.fa.fa-minus
+                    |Отзывы
+    sidebar-item
+      ul.collapsible data-collapsible="accordion"
+        li
+          .collapsible-header.waves-effect
+            i.fa.fa-magic
+            |Бонусная программа
+          .collapsible-body
+            ul
+              li
+                a href="#"
+                  i.fa.fa-minus
+                  | Настройки
+              li
+                a href="#"
+                  i.fa.fa-minus
+                  | Шаринг в соцсетях
+              li
+                a href="#"
+                  i.fa.fa-minus
+                  | Полезные действия
+              li
+                = link-to 'reward-templates' current-when="reward-templates new-reward-template edit-reward-template reward-template"
+                  i.fa.fa-minus
+                  | Призы
+              li
+                a href="#"
+                  i.fa.fa-minus
+                  | Начисление баллов
+              li
+                a href="#"
+                  i.fa.fa-minus
+                  | История начисления баллов
+              li
+                = link-to 'rewards-history'
+                  i.fa.fa-minus
+                  | История распределения призов
+    if-can subjectType='User' subjectId=null action='show_in_main_menu'
+      sidebar-item
+        ul.collapsible data-collapsible="accordion"
+          li
+            a.solo-link href="#"
+              .collapsible-header.waves-effect
+                i.fa.fa-database
+                |Клиенты

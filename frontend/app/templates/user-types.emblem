@@ -1,0 +1,29 @@
+.workout-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div Список типов учетных записей
+      = link-to 'new-user-type' class='btn new-item without-margin'
+        i.fa.fa-plus
+        | Добавить тип учетной записи
+
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название
+          th  Доступные действия
+          th  Действия
+      tbody
+        = each model as |userType index|
+          tr
+            td = inc index page perPage
+            td = userType.name
+            td = userType.availableActions
+            td
+              custom-action action='edit'     model=userType icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              custom-action action='destroy'  model=userType icon='fa-times'           tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='change  Page'
+

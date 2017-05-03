@@ -1,0 +1,66 @@
+.club-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Редактирование клуба
+  .content-container
+    form
+      .row.tab-content
+        .label-wrapper
+          label Изображения клуба
+        = each model.clubImages as |image|
+          .col.s12.m6.l3.club-image
+            .material-placeholder
+              img src=image.fileUrl
+            .delete-image{action 'deleteImage' image}
+              i.fa.fa-times.fa-2x
+      .col
+        club-image-uploader club=model
+      .col
+        label Название клуба
+        = input type='text' value=model.name
+      .col
+        label Описание клуба
+        = textarea value=model.description class='materialize-textarea'
+      .col
+        .label-wrapper
+          label Режим работы
+        .col.s3.day-wrapper
+          .day-title
+            |Понедельник-Пятница
+          .day-content
+            .time
+              pick-a-time placeholder="Время начала" id="weekdaysTimeStart" on-selected=(action 'setTime') options=timepickerOptions date=model.clubShedule.weekdaysTimeStart
+              pick-a-time placeholder="Время окончания" id="weekdaysTimeStop" on-selected=(action 'setTime') options=timepickerOptions date=model.clubShedule.weekdaysTimeStop
+        .col.s3.day-wrapper
+          .day-title
+            |Суббота-Воскресение
+          .day-content
+            .time
+              pick-a-time placeholder="Время начала" id="weekendTimeStart" on-selected=(action 'setTime') options=timepickerOptions date=model.clubShedule.weekendTimeStart
+              pick-a-time placeholder="Время окончания" id="weekendTimeStop" on-selected=(action 'setTime') options=timepickerOptions date=model.clubShedule.weekendTimeStop
+      .col
+        label Номер клуба
+        = input type='text' value=model.phone
+      .col
+        label Адрес клуба
+        = input type='text' value=model.address
+      .col
+        label Ссылка VK
+        = input type='text' value=model.vkLink
+      .col
+        label Ссылка Twitter
+        = input type='text' value=model.twitterLink
+      .col
+        label Ссылка Facebook
+        = input type='text' value=model.facebookLink
+      .col
+        label Ссылка Instagram
+        = input type='text' value=model.instagramLink
+      .col
+        label Ссылка на сайт клуба
+        = input type='text' value=model.websiteLink
+
+      .col.actions
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+        = link-to 'club' model.id class="waves-effect waves-light btn-large"
+          |Отмена

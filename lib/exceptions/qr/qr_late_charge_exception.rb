@@ -1,0 +1,2 @@
+class QrLateChargeException < Exception
+end

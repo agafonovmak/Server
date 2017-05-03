@@ -1,0 +1,126 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.fitclubs.nsuask.ru",
+  "resourcePath": "qrs",
+  "apis": [
+    {
+      "path": "/mobile/qrs/{id}/charge.json",
+      "operations": [
+        {
+          "summary": "Charge QR by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "QR id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 201,
+              "responseModel": null,
+              "message": null
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            },
+            {
+              "code": 601,
+              "responseModel": null,
+              "message": "QR Early Exception"
+            },
+            {
+              "code": 602,
+              "responseModel": null,
+              "message": "QR Late Exception"
+            },
+            {
+              "code": 603,
+              "responseModel": null,
+              "message": "QR Max Charge Exception"
+            },
+            {
+              "code": 604,
+              "responseModel": null,
+              "message": "QR Cooldown Exception"
+            }
+          ],
+          "nickname": "Mobile::Qrs#charge",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/qrs.json",
+      "operations": [
+        {
+          "summary": "Lists all QR",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Qrs#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/qrs/{id}.json",
+      "operations": [
+        {
+          "summary": "Show QR by id",
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "QR id",
+              "required": true
+            }
+          ],
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Qrs#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

@@ -1,0 +1,8 @@
+.input-field.col.s12
+  select{action 'setValue' on='change'}
+    option disabled="" selected="" value=""  Выберите опцию из списка
+    = each options as |option|
+      option value=option
+        = option
+  label
+    = title

@@ -1,0 +1,53 @@
+.tickets-workout-wrapper
+  .row.section-header
+    h4.page-title
+      div Запросы на гостевой визит
+    .col.m12.s12.btn-div.buttons-s.types
+      if isNullState
+        a class="waves-effect waves-light btn white-text primary-button" Все
+      else
+        a{action 'setState' null} Все
+      if isOpenState
+        a class="waves-effect waves-light btn white-text green" Открытые
+      else
+        a{action 'setState' 'opened'} Открытые
+      if isCloseState
+        a class="waves-effect waves-light btn white-text blue" Закрытые
+      else
+        a{action 'setState' 'closed'} Закрытые
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Дата
+          th  Ф.И.О.
+          th  Коментарий клиента
+          th  Мобильный
+          th  Email
+          th  Время визита
+          th  Статус
+          th  Коментарий модератора
+          th  Действия
+      tbody
+        = each model as |ticket index|
+          tr
+            td = inc index page perPage
+            td = ticket.formattedCreatedAt
+            td = ticket.name
+            td = ticket.comment
+            td = ticket.mobile
+            td = ticket.email
+            td = ticket.formattedTime
+            td
+              span class=ticket.statusClass
+                = ticket.formattedStatus
+            td
+              = ticket.formattedModeratorComment
+            td
+              = if ticket.isOpened
+                ticket-action sendingAction='close'   ticket=ticket
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='changePage'
+
+

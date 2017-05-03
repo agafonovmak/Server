@@ -1,0 +1,32 @@
+.buttons{
+  .subtitle{
+    padding-top: 20px;
+  }
+  .primary-button,.primary-button:hover{
+    background-color:#88C542;
+    &.custom-btn{
+      background-color: transparent;
+      border-color:#88C542;
+      color:#88C542;
+    }
+  }
+  .buttons-s{
+    .btn{
+      @media #{$max-480}{
+        width: 100%;
+      }
+    }
+  }
+}
+
+.new-item{
+  font-size: 1rem;
+  margin: 0 10px;
+  i{
+    margin-right: 10px;
+  }
+}
+
+.inline-block{
+  display: inline-block;
+}

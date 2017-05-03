@@ -1,0 +1,29 @@
+.workout-types-wrapper
+  .row.section-header
+    h4.page-title
+      div Список типов групповых тренировок
+      = link-to 'new-workout-type' class='btn new-item without-margin'
+        i.fa.fa-plus
+        |Добавить тип тренировок
+
+  .content-container
+    table.responsive-table
+      thead
+        tr
+          th  #
+          th  Название
+          th  Описание
+          th  Действия
+      tbody
+        = each model as |type index|
+          tr
+            td = inc index page perPage
+            td = type.title
+            td = item-description description=type.description
+            td
+              custom-action action='edit'     model=type icon='fa-pencil-square-o' tooltipTitle='Редактировать'
+              custom-action action='destroy'  model=type icon='fa-times'           tooltipTitle='Удалить'
+
+    if isPaginationEnabled
+      = page-numbers content=paginationContent action='change  Page'
+

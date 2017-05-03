@@ -1,0 +1,2 @@
+class QrCooldownException < Exception
+end

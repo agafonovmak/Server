@@ -1,0 +1,32 @@
+.reward-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div История распределения призов
+  .content-container
+      table.responsive-table
+        thead
+          tr
+            th  #
+            th  Франшиза
+            th  Круб
+            th  Клиент
+            th  Дата и время
+            th  Тип
+            th  Действия
+        tbody
+          = each model as |history index|
+            tr
+              td = inc index page perPage
+              td = history.franchise.name
+              td = history.club.name
+              td = history.client.name
+              td = history.formattedDateTime
+              td = history.formattedType
+              td
+                custom-action action='show'    model=history icon='fa-search' tooltipTitle='Просмотреть'
+                custom-action action='destroy' model=history icon='fa-times' tooltipTitle='Удалить'
+
+      if isPaginationEnabled
+        = page-numbers content=paginationContent action='changePage'
+
+

@@ -1,0 +1,15 @@
+a.modal-trigger.tooltipped data-position="bottom" data-delay="50" data-tooltip=tooltipTitle href=modalIdHref
+  if isCloseAction
+    i.fa.fa-check
+  else
+    i.fa.fa-times
+
+div class='modal' id=modalId
+  .modal-content
+    h4
+      = modalHeader
+    p Можете добавить коментарий:
+    = textarea value=moderatorComment
+  .modal-footer
+    a.modal-action.modal-close.waves-effect.waves-green.btn-flat{action 'appendAction'} Выполнить
+

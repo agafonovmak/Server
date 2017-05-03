@@ -1,0 +1,32 @@
+.workout-template-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание шаблона тренировок
+  .content-container
+    form
+      .col
+        label Название шаблона тренировок
+        = input type='text' value=model.name
+      .col
+        label Описание шаблона тренировок
+        = textarea value=model.description class='materialize-textarea'
+      .col
+        label Длительность (в мин.)
+        = input type='text' value=model.duration
+      .col
+        label Количество мест
+        = input type='text' value=model.seatsCount
+      .col
+        label Зал
+        = input type='text' value=model.gym
+      .col
+        label URL для шаринга
+        = input type='text' value=model.shareUrl
+      .col.with-margin
+        = input id="isNeedManagerConfirm" type="checkbox" checked=model.isNeedManagerConfirm
+        label for="isNeedManagerConfirm" Требует подтверждение менеджера
+      .col.actions
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+        = link-to 'workout-templates' class="waves-effect waves-light btn-large"
+          |Отмена
+

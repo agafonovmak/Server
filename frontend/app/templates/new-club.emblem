@@ -1,0 +1,25 @@
+.club-templates-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание клуба
+  .content-container
+    form
+      .col
+        label Имя клуба
+        = input type='text' value=model.name
+      .col
+        label Описание клуба
+        = textarea value=model.description  class='materialize-textarea'
+      .col
+        label Телефон клуба
+        = input type='text' value=model.phone
+      .col
+        label Адрес клуба
+        = input type='text' value=model.address
+      .col
+        label Адрес веб-сайта клуба
+        = input type='text' value=model.websiteLink
+    .col
+      a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+      = link-to 'clubs' class="waves-effect waves-light btn-large"
+        | Отмена

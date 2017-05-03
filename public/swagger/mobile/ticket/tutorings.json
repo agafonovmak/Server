@@ -1,0 +1,125 @@
+{
+  "apiVersion": "1.0",
+  "swaggerVersion": "1.2",
+  "basePath": "http://api.fitclubs.nsuask.ru",
+  "resourcePath": "tutorings",
+  "apis": [
+    {
+      "path": "/mobile/ticket/tutorings.json",
+      "operations": [
+        {
+          "summary": "Lists all Tutoring Tickets",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "nickname": "Mobile::Ticket::Tutorings#index",
+          "method": "get"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/ticket/tutorings.json",
+      "operations": [
+        {
+          "summary": "Create ticket with attributes",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            },
+            {
+              "code": 404,
+              "responseModel": null,
+              "message": "Not Found"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "header",
+              "name": "Authorization",
+              "type": "string",
+              "description": "Authentication token",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "email",
+              "type": "string",
+              "description": "tutoring email",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "mobile",
+              "type": "string",
+              "description": "tutoring mobile",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "name",
+              "type": "string",
+              "description": "tutoring name",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "user_id",
+              "type": "string",
+              "description": "tutoring user id",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "club_id",
+              "type": "string",
+              "description": "tutoring club id",
+              "required": true
+            },
+            {
+              "paramType": "query",
+              "name": "tutoring_id",
+              "type": "string",
+              "description": "tutoring id",
+              "required": true
+            }
+          ],
+          "nickname": "Mobile::Ticket::Tutorings#create",
+          "method": "post"
+        }
+      ]
+    },
+    {
+      "path": "/mobile/ticket/tutorings/{id}.json",
+      "operations": [
+        {
+          "summary": "Show tutoring ticket by id",
+          "responseMessages": [
+            {
+              "code": 200,
+              "responseModel": null,
+              "message": "Ok"
+            }
+          ],
+          "parameters": [
+            {
+              "paramType": "path",
+              "name": "id",
+              "type": "string",
+              "description": "tutoring ticket id",
+              "required": true
+            }
+          ],
+          "nickname": "Mobile::Ticket::Tutorings#show",
+          "method": "get"
+        }
+      ]
+    }
+  ],
+  "authorizations": null
+}

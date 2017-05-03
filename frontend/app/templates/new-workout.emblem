@@ -1,0 +1,60 @@
+.workout-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Создание тренировки
+  .content-container
+    form
+      .col
+        label Дата и время начала
+        jquery-datetimepicker value=model.datetime
+      .col
+        label Стоимость тренировки
+        = input type='text' value=model.price
+      .with-margin
+        static-select title='Выбор статуса тренировки' options=model.STATUSES value=model.status
+      .with-margin
+        select-component title='Выбор типа тренировки' options=types value=model.type optionType='workout/type'
+      .with-margin
+        select-component title='Выбор шаблона тренировки' options=templates value=model.template onSelect='setTemplate' optionType='workout/template'
+      .col
+        label Название тренировоки
+        = input type='text' value=model.name
+      .col
+        label Описание тренировоки
+        = textarea value=model.description class='materialize-textarea'
+      .col
+        label Длительность (в мин.)
+        = input type='text' value=model.duration
+      .col
+        label Количество мест
+        = input type='text' value=model.seatsCount
+      .col
+        label Зал
+        = input type='text' value=model.gym
+      .col
+        label Тренеры
+        .row
+          if model.coaches
+            ul.collection
+              each model.coaches as |coach|
+                li.collection-item
+                  .input
+                    = coach.name
+                  .icon
+                    i.fa.fa-times{action 'removeCoach' coach}
+          else
+            | Тренеры не выбраны
+        .row
+          coach-select-component model=model options=coaches
+
+      .col
+        label URL для шаринга
+        = input type='text' value=model.shareUrl
+      .col.with-margin
+        = input id="isNeedManagerConfirm" type="checkbox" checked=model.isNeedManagerConfirm
+        label for="isNeedManagerConfirm" Требует подтверждение менеджера
+      .col.actions
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+        = link-to 'training-packages' class="waves-effect waves-light btn-large"
+          |Отмена
+

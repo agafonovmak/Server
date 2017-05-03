@@ -1,0 +1,14 @@
+#full-page.center.signin-page
+  .black.white-text.signin-content
+    h1.center-align.mTitle style="font-family: BaronFont"  FITCLUBS
+    .white.signUpContainer.center
+      .signUpContent
+        h6.black-text.center-align Введите данные Вашего аккаунта:
+        form{action 'authenticate' on='submit'}
+          .input-field
+            = input id="email" class="validate black-text" type="text" autocomplete="off" value=email
+            label.left-align for="email"  Email
+          .input-field
+            = input id="password" class="validate black-text" type="password" autocomplete="off" value=password
+            label.left-align for="password"  Пароль
+          button.waves-effect.waves-light.btn.signInButton  Войти

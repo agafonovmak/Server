@@ -1,0 +1,25 @@
+.schedule-wrapper
+  .row.section-header
+    h4.page-title
+      div
+        | Шаблон расписания&nbsp;
+        = model.name
+
+.content-container
+  .row
+    label Название шаблона
+    p.lead = model.name
+  .row
+    full-calendar [
+      header=fcHeader
+      events=events
+      timeFormat="HH:mm"
+      slotDuration="00:10"
+      scrollTime="00:30"
+      minTime="00:00"
+      maxTime="24:00"
+      columnFormat="dddd"
+      allDaySlot=false
+      nowIndicator=false
+      firstDay=1
+    ]

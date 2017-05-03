@@ -1,0 +1,35 @@
+.reward-template-wrapper
+  .row.section-header
+    h4.page-title
+      div.inline-block Редактирование приза
+  .content-container
+    form
+      .col
+        label Имя
+        = input type='text' value=model.name
+      .col
+        label Описание
+        = textarea value=model.description class='materialize-textarea'
+      .col
+        label Изображение
+        if model.fileUrl
+          .news-image
+            img class="materialboxed" width="650" src=model.fileUrl
+            .delete-image{action 'deleteImage'}
+              i.fa.fa-times.fa-2x
+        else
+          file-uploader file=model.file
+      .col
+        label Стоимость приза (Количество звезд)
+        = input type='text' value=model.levelCost
+      .col
+        label Лимит
+        = input type='text' value=model.startedRewardsCount
+      .col.with-margin
+        = input id="showInApp" type="checkbox" checked=model.showInApp
+        label for="showInApp" Показывать в приложении
+      .col.actions
+        a.waves-effect.waves-light.btn-large.white-text{action 'save'} Сохранить
+        = link-to 'reward-templates' class="waves-effect waves-light btn-large"
+          | Отмена
+

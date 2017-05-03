@@ -1,0 +1,55 @@
+.news-wrapper
+  .row.section-header
+    h4.page-title
+      div Новость #{model.title}
+      = link-to 'edit-news' model.id class='btn new-item without-margin'
+        i.fa.fa-pencil-square-o
+        |Редактировать
+  .content-container
+    .col
+      label Заголовок новости
+      p.lead = model.title
+
+    .col
+      label Дата публикации
+      p.lead = model.formattedPublicationDate
+
+    .col
+      label Тип новости
+      p.lead = model.formattedType
+
+    .col
+      label Состояние
+      p.lead = model.formattedAasmState
+
+    if model.body
+      .col
+        label Текст новости
+        p.lead == model.body
+
+    if model.youtubeVideoUrl
+      .col
+        label Видео
+        p.lead
+          ember-youtube ytid=model.youtubeId
+
+    if model.imageUrl
+      .col
+        label Фото
+        p.lead
+          img class="materialboxed" width="650" src=model.imageUrl
+
+    .col
+      label Видимость в приложении
+      p.lead = model.formattedIsOnSlider
+
+    if model.sharingUrl
+      .col
+        label URL для шаринга
+        p.lead
+          a href=model.sharingUrl target='_blank'
+            = model.sharingUrl
+
+
+
+

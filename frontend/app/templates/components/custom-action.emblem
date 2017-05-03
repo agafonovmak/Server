@@ -1,0 +1,2 @@
+a.tooltipped{action 'appendAction'} data-position="bottom" data-delay="50" data-tooltip=tooltipTitle
+  i class=iconClass
